@@ -1,0 +1,346 @@
+<div class="header-wrapper header-wrapper--fixed {{headerAdditionalClasses}}" data-ms-theme="tools">
+    {{#if flash.enabled}} {{> components/flash}} {{/if}}
+    {{> components/cookieDisclaimer}}
+    <header role="banner" class="header" itemtype="http://schema.org/Store" itemid="#this" itemscope="" class="nav-tools">
+        <div class="nav-tools-header__top">
+            <div class="nav-tools-header__top-bound">
+                <a href="/" id="logo-wrapper" class="nav-tools__logo-wrapper">
+                    {{#if logo}}
+                    <img id="image-logo" src="{{logo}}" alt="{{name}}" />
+                    {{else}}
+                    <span class="header--custom-text">
+                        {{name}}
+                    </span>
+                    {{/if}}
+                </a>
+                <!-- Search box -->
+                <div class="nav-tools-header__top-bound-separation">
+                    <div class="top-separation">
+                        <label class="nav-tools-header__searchbox-mock" for="search-box-toggle"> </label>
+                        <input type="checkbox" name="search-box-toggle" id="search-box-toggle" />
+                        <div class="nav-tools-header__searchbox {{hasInfoClass}}">
+                            {{#if headerMessage}}
+                            <div class="header__searchbox-info header--custom-text">
+                                {{{headerMessage}}}
+                            </div>
+                            <!-- /.header__searchbox-info header--custom-text -->
+                            {{/if}}
+                            <form class="search-box-container" id="search-form" action="{{home_url}}">
+                                <div class="close"></div>
+                                <input type="text" id="search-input" name="search-box-tools" placeholder="{{i18n.placeholder}}" />
+                                <button type="submit" class="search-button">
+                                    <img src="https://iili.io/HXp5UHN.png" class="search-img" alt="">
+                                </button>
+                                <!-- /.search-button -->
+                            </form>
+                        </div>
+                        <!-- Icons contact/cart -->
+                        <nav class="nav-tools-header__icons">
+                            {{#if contact.href}}
+                            <a href="{{contact.href}}" class="contact-button" rel="nofollow">
+                                {{> tools/views/partials/contact}}
+                            </a>
+                            {{/if}}
+                            {{#if cart.href}}
+                            <a href="{{cart.href}}" title="Carrito" class="cart-button" id="nav-cart">
+                                {{> tools/views/partials/cart-badge}}
+                                {{> tools/views/partials/cart}}
+                            </a>
+                            {{/if}}
+                            <!-- Required for menu-responsive widget -->
+                            <input type="checkbox" id="mobile-categories-menu-switch" name="nav-tools-header__menu-switch" />
+                            <label for="mobile-categories-menu-switch" id="hamburguer-menu">
+                                <span class="nav-header__hamburger"></span>
+                                <span class="nav-header__hamburger"></span>
+                                <span class="nav-header__hamburger"></span>
+                            </label>
+                            <!-- Mobile categories menu has to be a sibling of switcher-->
+                            <ul class="nav-list nav-list--vertical" itemtype="http://schema.org/SiteNavigationElement" itemscope>
+                                {{!-- {{#each menu}}
+                                <div class="nav-tools-list--vertical__item" data-toggle="{{this.name}}">
+                                    <li class="nav-tools-list--vertical__category header--custom-text">
+                                        <a href="{{this.url}}">{{this.name}}</a>
+                                        {{#if this.nodes}}
+                                        <label for="attr-{{@../index}}-{{@index}}" data-js="subCategory-{{@index}}" class="toggle-menu subcategory">
+                                            <span class="nav-header__toggle"></span>
+                                            <span class="nav-header__toggle"></span>
+                                        </label>
+                                        {{/if}}
+                                        <!-- /.attr-x -->
+                                        <hr class="nav-tools-list--vertical__hr header--custom-border" />
+                                    </li>
+                                    <!-- /.nav-tools-list--vertical__category header--custom-text -->
+                                    <div class="target-subCategory-{{@index}}">
+                                        {{#each this.nodes}}
+                                        <div class="nav-tools-list--vertical__subitem">
+                                            <li class="header--custom-text">
+                                                <a href="{{this.url}}">{{this.name}}</a>
+                                                {{#if this.nodes}}
+                                                <label for="attr-{{@../index}}-{{@index}}" data-js="attribute-{{@../index}}" class="toggle-menu attribute">
+                                                    <span class="nav-header__toggle"></span>
+                                                    <span class="nav-header__toggle"></span>
+                                                </label>
+                                                {{/if}}
+                                                <!-- /.attr-x -->
+                                            </li>
+                                            <!-- /.header--custom-text -->
+                                            <div class="nav-tools-list--vertical__attr-container target-attribute-{{@../index}}">
+                                                {{#each this.nodes}}
+                                                <li class="nav-tools-list--vertical__attribute header--custom-text">
+                                                    <a href="{{this.url}}">{{this.name}}</a>
+                                                </li>
+                                                {{/each}}
+                                            </div>
+                                        </div>
+                                        {{/each}}
+                                    </div>
+                                </div>
+                                {{/each}}
+
+                                <li class="nav-tools-list--vertical__category header--custom-text how-buy__button" data-js="how-buy__button" itemprop="name" tools-custom-data-emitter="how-buy__button">
+                                  <a href="{{linkToHowBuy.href}}">{{linkToHowBuy.label}}</a>
+                                </li> --}}
+                                <li class="nav-tools-list--vertical__category header--custom-text">
+                                    <a href="/_DisplayType_G_Discount_5-100_NoIndex_True" class="categorias-mobile"><img class=" ofertas" src="https://iili.io/HOH38Cu.png"><p>Ofertas</p></a>
+                                </li>
+                                <div class="div-hr">
+                                  <hr class="hr-mobile">
+                                </div>
+                                <li class="nav-tools-list--vertical__category header--custom-text categorias">
+                                    <a href="/listado/herramientas/" class="categorias-mobile"><img class="icon-categorias-mobile" src="https://iili.io/HXOgTkg.png"><p>Herramientas</p></a><img class="arrow-menu" src="https://iili.io/HXm8hl4.png" alt="">
+                                </li>
+                                <li class="nav-tools-list--vertical__category header--custom-text subcategorias invisible">
+                                    <a href="/listado/herramientas/herramientas-electricas/"><p>Herramientas Electricas</p></a>
+                                </li>
+                                <li class="nav-tools-list--vertical__category header--custom-text subcategorias invisible">
+                                    <a href="/listado/herramientas/herramientas-manuales/"><p>Herramientas Manuales</p></a>
+                                </li>
+                                <li class="nav-tools-list--vertical__category header--custom-text subcategorias invisible">
+                                    <a href="/listado/herramientas/herramientas-jardin/"><p>Herramientas para Jardín</p></a>
+                                </li>
+                                <li class="nav-tools-list--vertical__category header--custom-text subcategorias invisible">
+                                    <a href="/listado/herramientas/herramientas-jardin/"><p>Herramientas Insdustriales</p></a>
+                                </li>
+                                <li class="nav-tools-list--vertical__category header--custom-text subcategorias invisible">
+                                    <a href="/listado/herramientas/herramientas-neumaticas/"><p>Herramientas Neumáticas</p></a>
+                                </li>
+                                <div class="div-hr">
+                                  <hr class="hr-mobile">
+                                </div>
+                                <li class="nav-tools-list--vertical__category header--custom-text categorias">
+                                    <a href="/listado/construccion/" class="categorias-mobile"><img class="icon-categorias-mobile" src="https://iili.io/HXOgRTJ.png"><p>Construcción</p></a><img class="arrow-menu" src="https://iili.io/HXm8hl4.png" alt="">
+                                </li>
+                                <li class="nav-tools-list--vertical__category header--custom-text subcategorias invisible">
+                                    <a href="/listado/construccion/plomeria/"><p>Plomeria</p></a>
+                                </li>
+                                <li class="nav-tools-list--vertical__category header--custom-text subcategorias invisible">
+                                    <a href="/listado/construccion/electricidad/"><p>Electricidad</p></a>
+                                </li>
+                                <li class="nav-tools-list--vertical__category header--custom-text subcategorias invisible">
+                                    <a href="/listado/construccion/mobiliario-cocinas/"><p>Grifería para Cocina</p></a>
+                                </li>
+                                <li class="nav-tools-list--vertical__category header--custom-text subcategorias categorias invisible">
+                                    <a href="/listado/construccion/banos-sanitarios/" class="categorias-mobile"><p>Baños y Sanitaros</p></a><img class="arrow-menu" src="https://iili.io/HXm8hl4.png" alt="">
+                                </li>
+                                <li class="nav-tools-list--vertical__category header--custom-text subcategorias2 invisible">
+                                    <a href="/listado/construccion/banos-sanitarios/griferia-bano/"><p>Griferias para Baños</p></a>
+                                </li>
+                                <li class="nav-tools-list--vertical__category header--custom-text subcategorias2 invisible">
+                                    <a href="/listado/construccion/banos-sanitarios/bachas-bano/"><p>Bachas para Baños</p></a>
+                                </li>
+                                <li class="nav-tools-list--vertical__category header--custom-text subcategorias categorias invisible">
+                                    <a href="/listado/construccion/pintureria/" class="categorias-mobile"><p>Pinturería</p></a><img class="arrow-menu" src="https://iili.io/HXm8hl4.png" alt="">
+                                </li>
+                                <li class="nav-tools-list--vertical__category header--custom-text subcategorias2 invisible">
+                                    <a href="/listado/construccion/pintureria/pinturas/"><p>Pinturas</p></a>
+                                </li>
+                                <li class="nav-tools-list--vertical__category header--custom-text subcategorias2 invisible">
+                                    <a href="/listado/construccion/pintureria/accesorios-pintura/"><p>Accesorios para Pinturas</p></a>
+                                </li>
+                                <li class="nav-tools-list--vertical__category header--custom-text subcategorias2 invisible">
+                                    <a href="/listado/construccion/pintureria/terminacion-superficies/"><p>Terminación de Superficies</p></a>
+                                </li>
+                                <div class="div-hr">
+                                  <hr class="hr-mobile">
+                                </div>
+                                <li class="nav-tools-list--vertical__category header--custom-text categorias">
+                                    <a href="/listado/hogar-muebles-jardin/" class="categorias-mobile"><img class="icon-categorias-mobile" src="https://iili.io/HXOgIYF.png"><p>Hogar, muebles y jardín</p></a><img class="arrow-menu" src="https://iili.io/HXm8hl4.png" alt="">
+                                </li>
+                                <li class="nav-tools-list--vertical__category header--custom-text subcategorias invisible">
+                                    <a href="/listado/hogar-muebles-jardin/jardin-aire-libre/"><p>Jardín y Aire Libre</p></a>
+                                </li>
+                                <li class="nav-tools-list--vertical__category header--custom-text subcategorias invisible">
+                                    <a href="/listado/hogar-muebles-jardin/bazar-cocina/"><p>Bazar y Cocina</p></a>
+                                </li>
+                                <li class="nav-tools-list--vertical__category header--custom-text subcategorias invisible">
+                                    <a href="/listado/hogar-muebles-jardin/muebles-hogar/"><p>Muebles para el Hogar</p></a>
+                                </li>
+                                <li class="nav-tools-list--vertical__category header--custom-text subcategorias invisible">
+                                    <a href="/listado/hogar-muebles-jardin/seguridad-hogar/"><p>Seguridad para el Hogar</p></a>
+                                </li>
+                                <div class="div-hr">
+                                  <hr class="hr-mobile">
+                                </div>
+                                <li class="nav-tools-list--vertical__category header--custom-text categorias">
+                                    <a href="/griferia_NoIndex_True" class="categorias-mobile"><img class="icon-categorias-mobile" src="https://iili.io/HXOg7QR.png"><p>Grifería</p></a><img class="arrow-menu" src="https://iili.io/HXm8hl4.png" alt="">
+                                </li>
+                                <li class="nav-tools-list--vertical__category header--custom-text subcategorias invisible">
+                                    <a href="/listado/construccion/banos-sanitarios/griferia-bano/"><p>Grifería para Baños</p></a>
+                                </li>
+                                <li class="nav-tools-list--vertical__category header--custom-text subcategorias invisible">
+                                    <a href="/listado/construccion/mobiliario-cocinas/"><p>Bachas para Baños</p></a>
+                                </li>
+                                <div class="div-hr">
+                                  <hr class="hr-mobile">
+                                </div>
+                                <li class="nav-tools-list--vertical__category header--custom-text categorias">
+                                    <a href="/listado/herramientas/accesorios-herramientas/" class="categorias-mobile"><img class="icon-categorias-mobile" src="https://iili.io/HXOg5hv.png"><p>Accesorios</p></a><img class="arrow-menu" src="https://iili.io/HXm8hl4.png" alt="">
+                                </li>
+                                <li class="nav-tools-list--vertical__category header--custom-text subcategorias invisible">
+                                    <a href="/listado/herramientas/accesorios-herramientas/"><p>Accesorios para Herramientas</p></a>
+                                </li>
+                                <li class="nav-tools-list--vertical__category header--custom-text subcategorias invisible">
+                                    <a href="/listado/accesorios-vehiculos/"><p>Accesorios para Vehículos</p></a>
+                                </li>
+                                <div class="div-hr">
+                                  <hr class="hr-mobile">
+                                </div>
+                                <li class="nav-tools-list--vertical__category header--custom-text">
+                                    <a href="/listado/industrias-oficinas/" class="categorias-mobile"><img class="icon-categorias-mobile" src="https://iili.io/HXOgz21.png"><p>Equipamiento Comercial</p></a>
+                                </li>
+                                <div class="div-hr">
+                                  <hr class="hr-mobile">
+                                </div>
+                                <li class="nav-tools-list--vertical__category header--custom-text">
+                                    <a class="categorias-mobile" href="/p/como-comprar"><p>¿Cómo Comprar?</p></a>
+                                </li>
+                                
+                                
+                            </ul>
+                        </nav>
+                    </div>
+                    <!-- Desktop navigation menu -->
+                    <div class="nav-tools-header__categories">
+                        <ul itemscope itemtype="http://schema.org/SiteNavigationElement" class="nav-list nav-list--horizontal  header--custom-text header--custom-border" id="nav-list">
+                            {{#each menu}}
+                                <li class="nav-list__item" itemprop="name" tools-custom-data-emitter="{{@index}}">
+                                    <a href="{{this.url}}" class="nav-list__link">{{this.name}}</a>
+                                </li>
+                            {{/each}}
+
+                            {{#if sale.text}}
+                              <li class="nav-list__item nav-default__sale-link" id="nav-default__sale-link">
+                                <a href="{{sale.url}}" class="nav-list__link">{{sale.text}}</a>
+                              </li>
+                            {{/if}}
+
+                            <li class="nav-list__item nav-list__item--more" style="visibility: visible;">
+                                <div class="nav-list__link">{{i18n.moreCategories}}</div>
+                                <ul class="nav-list nav-list--dropdown " id="more-dropdown">
+                                    {{#each menu}}
+                                    <li class="nav-list__item header--custom-text" itemprop="name" tools-custom-data-receiver="{{@index}}">
+                                        <a href="{{this.url}}" class="nav-list__link">{{this.name}}</a>
+                                        <span> <hr/> </span>
+
+                                        <ul class="nav-list__item-subcategory">
+                                            {{#each this.nodes}}
+                                            <li class="nav-tools-list--vertical__attribute header--custom-text">
+                                                <a class="text-bold" href="{{this.url}}">{{this.name}}</a>
+                                            </li>
+                                            <ul class="nav-list__item-subcategory">
+                                                {{#each this.nodes}}
+                                                <li class="nav-tools-list--vertical__attribute header--custom-text">
+                                                    <a class="text-normal" href="{{this.url}}">{{this.name}}</a>
+                                                </li>
+                                                {{/each}}
+                                            </ul>
+                                            {{/each}}
+                                        </ul>
+                                        <!-- /.nav-list__item-subcategory -->
+                                    </li>
+                                    {{/each}}
+                                </ul>
+                            </li>
+                        </ul>
+                        <div class="subcategorires header--custom-background">
+                            {{#each menu}} {{#if this.nodes}}
+                            <div class="nav-tools-list--vertical__subitem-container" data-toggle="{{@index}}">
+                                <ul class="grid-list">
+                                    {{#each this.nodes}}
+                                    <li class="nav-tools-list--vertical__subitem header--custom-text">
+                                        <a href="{{this.url}}" class="">{{this.name}}</a>
+                                        <ul class="nav-tools-list--vertical__attribute_container">
+                                            {{#each this.nodes}}
+                                            <li class="nav-tools-list--vertical__attribute header--custom-text">
+                                                <a href="{{this.url}}" class="">{{this.name}}</a>
+                                            </li>
+                                            {{/each}}
+                                        </ul>
+                                    </li>
+                                    {{/each}}
+                                </ul>
+                            </div>
+                            {{/if}} {{/each}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <div class="menu-desktop">
+        <ul class="dropdown">
+            <li><a href="/listado/herramientas/"><img class="icon-categorias" src="https://iili.io/HXOgTkg.png">Herramientas</a>
+                <ul>
+                    <li><a href="/listado/herramientas/herramientas-electricas/">Herramientas Eléctricas</a></li>
+                    <li><a href="/listado/herramientas/herramientas-manuales/">Herramientas Manuales</a></li>
+                    <li><a href="/listado/herramientas/herramientas-jardin/">Herramientas para Jardín</a></li>
+                    <li><a href="/listado/herramientas/herramientas-industriales/">Herramientas Industriales</a></li>
+                    <li><a href="/listado/herramientas/herramientas-neumaticas/">Herramientas Neumáticos</a></li>
+                </ul>
+            </li>
+            <li><a href="/listado/construccion/"><img class="icon-categorias" src="https://iili.io/HXOgRTJ.png">Construcción</a>
+                <ul>
+                    <li><a href="/listado/construccion/plomeria/">Plomería</a></li>
+                    <li><a href="/listado/construccion/electricidad/">Electricidad</a></li>
+                    <li><a href="/listado/construccion/mobiliario-cocinas/">Griferia para Cocina</a></li>
+                    <li><a href="/listado/construccion/banos-sanitarios/">Baños y Sanitarios</a>
+                        <ul>
+                            <li><a href="/listado/construccion/banos-sanitarios/griferia-bano/">Griferías para baños</a></li>
+                            <li><a href="/listado/construccion/banos-sanitarios/bachas-bano/">Bachas para baños</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="/listado/construccion/pintureria/">Pinturería</a>
+                        <ul>
+                            <li><a href="/listado/construccion/pintureria/pinturas/">Pinturas</a></li>
+                            <li><a href="/listado/construccion/pintureria/accesorios-pintura/">Accesorios para Pinturas</a></li>
+                            <li><a href="/listado/construccion/pintureria/terminacion-superficies/">Terminación de Superficies</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+            <li><a href="/listado/hogar-muebles-jardin/"><img class="icon-categorias" src="https://iili.io/HXOgIYF.png">Hogar, muebles y jardín</a>
+                <ul>
+                    <li><a href="/listado/hogar-muebles-jardin/jardin-aire-libre/">Jardín y Aire Libre</a></li>
+                    <li><a href="/listado/hogar-muebles-jardin/bazar-cocina/">Bazar y Cocina</a></li>
+                    <li><a href="/listado/hogar-muebles-jardin/muebles-hogar/">Muebles para el Hogar</a></li>
+                    <li><a href="/listado/hogar-muebles-jardin/seguridad-hogar/">Seguridad para el Hogar</a></li>
+                </ul>
+            </li>
+            <li><a href="/griferia_NoIndex_True"><img class="icon-categorias" src="https://iili.io/HXOg7QR.png">Grifería</a>
+                <ul>
+                    <li><a href="/listado/construccion/banos-sanitarios/griferia-bano/">Grifería para Baños</a></li>
+                    <li><a href="/listado/construccion/mobiliario-cocinas/">Griferías para Cocina</a></li>
+                </ul>
+            </li>
+            <li><a href="/listado/herramientas/accesorios-herramientas/"><img class="icon-categorias" src="https://iili.io/HXOg5hv.png">Accesorios</a>
+                <ul>
+                    <li><a href="/listado/herramientas/accesorios-herramientas/">Accesorios para Herramientas</a></li>
+                    <li><a href="/listado/accesorios-vehiculos/">Accesorios para Vehículos</a></li>
+                </ul>
+            </li>
+            <li><a href="/listado/industrias-oficinas/"><img class="icon-categorias" src="https://iili.io/HXOgz21.png">Equipamiento Comercial</a></li>
+            <li><a href="/_DisplayType_G_Discount_5-100_NoIndex_True" style="color: #ffffff;"><img class="icon-categorias" src="https://iili.io/HOH38Cu.png">Ofertas</a></li> 
+        </ul>
+    </div>
+</div>
+                 

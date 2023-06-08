@@ -1,0 +1,51 @@
+<div class="template-suscription-main-container">
+  <div class="template-suscription-container">
+    <div>
+      <div class="template-suscription-container__title">{{subscriptionFooter.title}}</div>
+      <div class="template-suscription-container__description">{{subscriptionFooter.description}}</div>
+    </div>
+    <div>
+      <div class="template-suscription-container-success">
+        <div class="template-suscription-container-success__container">
+          <div class="template-suscription-container-success__text">
+            {{subscriptionFooter.success}}
+          </div>
+          <div class="template-suscription-container-success__image">
+            <span>{{> 'icons/social_networks/mail'}}</span>
+          </div>
+        </div>
+      </div>
+      <div class="template-suscription-container-information">
+        <div class="template-suscription-container__information">
+          <input type="text" placeholder="{{subscriptionFooter.inputEmailLabel}}"
+            class="template-suscription-container__email">
+          <button class="template-suscription-container__button">
+            <span class="template-suscription-container__text">{{subscriptionFooter.textButton}}</span>
+          </button>
+        </div>
+        <div class="template-suscription-container__error">
+          <span class="template-suscription-container__error-icon">
+            {{> 'icons/utils/alert'}}
+          </span>
+          {{subscriptionFooter.error}}
+        </div>
+        <div class="template-suscription-container__error-bad-email">
+          <span class="template-suscription-container__error-icon">
+            {{> 'icons/utils/alert'}}
+          </span>
+          {{subscriptionFooter.errorBadEmail}}
+        </div>
+        <div class="template-suscription-container__error-empty-email">
+          <span class="template-suscription-container__error-icon">
+            {{> 'icons/utils/alert'}}
+          </span>
+          {{subscriptionFooter.errorEmptyEmail}}
+        </div>
+        <div class="template-suscription-container__legal-text">{{subscriptionFooter.legal}}
+          <a href="{{subscriptionFooter.legalLink}}" target="_blank"
+            class="template-suscription-container__legal-text-link">{{subscriptionFooter.legalLinktext}}</a>
+        </div>
+      </div>  
+    </div>
+  </div>
+</div>
